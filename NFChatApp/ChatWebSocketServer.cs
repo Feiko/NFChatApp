@@ -13,7 +13,7 @@ namespace NFChatApp
         {
             MaxClients = 8,
             ServerName = "ChatServer",
-            IStandAlone = true
+            IsStandAlone = true
         });
 
         internal static bool Start()
@@ -36,7 +36,7 @@ namespace NFChatApp
             
             if (string.IsNullOrEmpty(name)) return false;
 
-            if (WebsocketServer.AddWebsocket(context)) //todo add client  
+            if (WebsocketServer.AddWebSocket(context)) //todo add client  
             {
                 WebSocketUsers[context.Request.RemoteEndPoint.ToString()] = name;
                 WebsocketServer.BroadCast("name is joining the chat!");

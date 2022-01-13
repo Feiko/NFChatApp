@@ -23,6 +23,7 @@
     <Compile Include="ControllerChat.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wireless80211.cs" />
     <Compile Include="WirelessAP.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,10 +55,10 @@
       <HintPath>..\packages\nanoFramework.System.Net.1.8.0-preview.9\lib\System.Net.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
-      <HintPath>..\packages\nanoFramework.System.Net.Http.Server.1.4.0-preview.6\lib\System.Net.Http.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.System.Net.Http.1.4.0-preview.6\lib\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.WebSockets">
-      <HintPath>..\packages\nanoframework.System.Net.WebSockets.Server.1.0.0-preview.52\lib\System.Net.WebSockets.dll</HintPath>
+      <HintPath>..\packages\nanoframework.System.Net.WebSockets.Server.1.0.0-preview.57\lib\System.Net.WebSockets.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading">
       <HintPath>..\packages\nanoFramework.System.Threading.1.0.3\lib\System.Threading.dll</HintPath>
