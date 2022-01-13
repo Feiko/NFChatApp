@@ -11,12 +11,18 @@ namespace NFChatApp
         [Method("GET")]
         public void Get(WebServerEventArgs e)
         {
-            if(e.Context.Request.Headers["Upgrade"] == "websocket") //is a websocket request
+            if (e.Context.Request.Headers["Upgrade"] == "websocket") //is a websocket request
             {
-                if (!ChatWebSocketServer.AddClient(e.Context)) WebServer.OutputHttpCode(e.Context.Response, HttpStatusCode.BadRequest);
+                if (!ChatWebSocketServer.AddClient(e.Context))
+                {
+                    WebServer.OutputHttpCode(e.Context.Response, HttpStatusCode.BadRequest);
+                }
             }
+            else
+            {
 
-            CreateChatLoginPortal(e.Context);
+                CreateChatLoginPortal(e.Context);
+            }
         }
 
 
@@ -91,7 +97,7 @@ namespace NFChatApp
         <ul id='messages'>
         </ul>
         <script>
-            var ws = new WebSocket(""ws://"" + location.hostname + "":8080/chat"", ""{name}"");
+            var ws = new WebSocket(""ws://"" + location.hostname + ""/chat"", ""{name}"");
         ws.onmessage = function(event) {{
             var messages = document.getElementById('messages')
                 var message = document.createElement('li')

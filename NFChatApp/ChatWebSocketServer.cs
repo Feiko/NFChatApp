@@ -13,7 +13,7 @@ namespace NFChatApp
         {
             MaxClients = 8,
             ServerName = "ChatServer",
-            IsStandAlone = true
+            IsStandAlone = false
         });
 
         internal static bool Start()

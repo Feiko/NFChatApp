@@ -44,13 +44,14 @@ namespace NFChatApp
 
             ChatWebSocketServer.Start();
 
-            using(WebServer server = new WebServer(80, HttpProtocol.Http, new Type[] { typeof(ControllerChat) }))
+            using (WebServer server = new WebServer(80, HttpProtocol.Http, new Type[] { typeof(ControllerChat) }))
             {
                 server.Start();
                 Debug.WriteLine("connet to http://" + IPAddress.GetDefaultLocalAddress().ToString() + "/chat");
                 Thread.Sleep(Timeout.Infinite);
             }
 
+            Thread.Sleep(Timeout.Infinite);
 
             // Browse our samples repository: https://github.com/nanoframework/samples
             // Check our documentation online: https://docs.nanoframework.net/

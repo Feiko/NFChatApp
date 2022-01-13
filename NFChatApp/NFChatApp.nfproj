@@ -30,9 +30,6 @@
     <Reference Include="mscorlib">
       <HintPath>..\packages\nanoFramework.CoreLibrary.1.11.7\lib\mscorlib.dll</HintPath>
     </Reference>
-    <Reference Include="nanoFramework.Json">
-      <HintPath>..\packages\nanoFramework.Json.2.1.2-preview.4\lib\nanoFramework.Json.dll</HintPath>
-    </Reference>
     <Reference Include="nanoFramework.Runtime.Events">
       <HintPath>..\packages\nanoFramework.Runtime.Events.1.10.0-preview.1\lib\nanoFramework.Runtime.Events.dll</HintPath>
     </Reference>
@@ -45,20 +42,20 @@
     <Reference Include="nanoFramework.System.Text">
       <HintPath>..\packages\nanoFramework.System.Text.1.1.3-preview.4\lib\nanoFramework.System.Text.dll</HintPath>
     </Reference>
-    <Reference Include="nanoFramework.WebServer">
-      <HintPath>..\packages\nanoFramework.WebServer.1.0.0-preview.192\lib\nanoFramework.WebServer.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Device.WiFi">
+    <Reference Include="System.Device.WiFi, Version=1.4.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
       <HintPath>..\packages\nanoFramework.System.Device.WiFi.1.4.0-preview.11\lib\System.Device.WiFi.dll</HintPath>
+      <Private>True</Private>
+      <SpecificVersion>True</SpecificVersion>
     </Reference>
-    <Reference Include="System.Net">
+    <Reference Include="System.Net, Version=1.8.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
       <HintPath>..\packages\nanoFramework.System.Net.1.8.0-preview.9\lib\System.Net.dll</HintPath>
+      <Private>True</Private>
+      <SpecificVersion>True</SpecificVersion>
     </Reference>
-    <Reference Include="System.Net.Http">
-      <HintPath>..\packages\nanoFramework.System.Net.Http.1.4.0-preview.6\lib\System.Net.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.WebSockets">
-      <HintPath>..\packages\nanoframework.System.Net.WebSockets.Server.1.0.0-preview.57\lib\System.Net.WebSockets.dll</HintPath>
+    <Reference Include="System.Net.Http, Version=1.4.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.System.Net.Http.Server.1.4.0-preview.6\lib\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <SpecificVersion>True</SpecificVersion>
     </Reference>
     <Reference Include="System.Threading">
       <HintPath>..\packages\nanoFramework.System.Threading.1.0.3\lib\System.Threading.dll</HintPath>
@@ -72,6 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\nanoFramework.WebServer\nanoFramework.WebServer\nanoFramework.WebServer.nfproj" />
+    <ProjectReference Include="..\..\System.Net.WebSockets\WebSockets.Server\System.Net.WebSockets.Server.nfproj" />
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
   <ProjectExtensions>
