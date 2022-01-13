@@ -8,11 +8,12 @@ namespace NFChatApp
     internal class ControllerChat
     {
         [Route("chat")]
+        [Method("GET")]
         public void Get(WebServerEventArgs e)
         {
             if(e.Context.Request.Headers["Upgrade"] == "websocket") //is a websocket request
             {
-                ChatWebSocketServer.AddClient(e.Context);
+                if (!ChatWebSocketServer.AddClient(e.Context)) WebServer.OutputHttpCode(e.Context.Response, HttpStatusCode.BadRequest);
             }
 
             CreateChatLoginPortal(e.Context);
@@ -53,7 +54,7 @@ namespace NFChatApp
     </head>
     <body>
         <h1>Welcome to BOMBSHELTER Chat,</h1> 
-        {(friends.Length == 0 ? "<h3>Want to have some fun with friends in the chat? The following friends are already logged in:</h3>" : friendsHtml)}
+        {(friends.Length == 0 ? "<h3>Start the fun and be the first to enter the BOMBSHELTER Chat</h3>" : friendsHtml)}
         <br>
         <p>Please submit your name to joint the chat<p>
         <form action=""/chat"", method=""post"">
@@ -82,7 +83,7 @@ namespace NFChatApp
         <title>BOMBSHELTER Chat</title>
     </head>
     <body>
-        <h1>WebSocket BOMBSHELTER Chat - {name}</h1>
+        <h1>WebSocket BOMBSHELTER Chat - User {name}</h1>
         <form action="""" onsubmit=""sendMessage(event)"">
             <input type=""text"" id=""messageText"" autocomplete=""off""/>
             <button>Send</button>

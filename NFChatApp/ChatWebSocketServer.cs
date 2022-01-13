@@ -13,8 +13,7 @@ namespace NFChatApp
         {
             MaxClients = 8,
             ServerName = "ChatServer",
-            Port = 8080,
-            Prefix = "/chat"
+            IStandAlone = true
         });
 
         internal static bool Start()
@@ -37,9 +36,10 @@ namespace NFChatApp
             
             if (string.IsNullOrEmpty(name)) return false;
 
-            if (WebsocketServer == null) //todo add client  
+            if (WebsocketServer.AddWebsocket(context)) //todo add client  
             {
                 WebSocketUsers[context.Request.RemoteEndPoint.ToString()] = name;
+                WebsocketServer.BroadCast("name is joining the chat!");
                 return true;
             }
 
@@ -48,6 +48,7 @@ namespace NFChatApp
 
         private static void WebsocketServer_WebSocketClosed(object sender, WebSocketClosedEventArgs e)
         {
+            WebsocketServer.BroadCast($"{WebSocketUsers[e.EndPoint.ToString()]} has left the chat!");
             WebSocketUsers.Remove(e.EndPoint.ToString());
         }
 
@@ -55,7 +56,8 @@ namespace NFChatApp
         {
             if (e.Frame.MessageType == System.Net.WebSockets.WebSocketFrame.WebSocketMessageType.Text)
             {
-               // WebsocketServer.
+                string message = $"{WebSocketUsers[e.Frame.EndPoint.ToString()]}: {Encoding.UTF8.GetString(e.Frame.Buffer, 0, e.Frame.MessageLength)}";
+                WebsocketServer.BroadCast(message);
             }
         }
     }
