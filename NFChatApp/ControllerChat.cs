@@ -1,30 +1,37 @@
 ﻿using nanoFramework.WebServer;
 using System;
 using System.Text;
-using System.Collections;
-using nanoFramework.Json;
 using System.Net;
 
 namespace NFChatApp
 {
     internal class ControllerChat
     {
-        [Route("Chat")]
-        [Method("GET")]
+        [Route("chat")]
         public void Get(WebServerEventArgs e)
         {
+            if(e.Context.Request.Headers["Upgrade"] == "websocket") //is a websocket request
+            {
+                ChatWebSocketServer.AddClient(e.Context);
+            }
+
             CreateChatLoginPortal(e.Context);
         }
 
 
-        [Route("Chat")]
+        [Route("chat")]
         [Method("POST")]
         public void Post(WebServerEventArgs e)
         {
-            byte[] buff = new byte[e.Context.Request.ContentLength64];
-            e.Context.Request.InputStream.Read(buff, 0, buff.Length);
-            string rawData = Encoding.UTF8.GetString(buff, 0, buff.Length);
-            CreateChatSite(e.Context, rawData);
+            string[] content = GetRequestContent(e.Context).Split('=');
+            if (content.Length > 1 && content[0].ToLower() == "name" && !string.IsNullOrEmpty(content[1]))
+            {
+                CreateChatSite(e.Context, content[1]);
+            }
+            else
+            {
+                WebServer.OutputHttpCode(e.Context.Response, HttpStatusCode.BadRequest);
+            }
 
         }
 
@@ -49,9 +56,9 @@ namespace NFChatApp
         {(friends.Length == 0 ? "<h3>Want to have some fun with friends in the chat? The following friends are already logged in:</h3>" : friendsHtml)}
         <br>
         <p>Please submit your name to joint the chat<p>
-        <form action=""/chat"">
+        <form action=""/chat"", method=""post"">
             <label for=""name"">Name:</label><br>
-            <input type=""text"" id=""fname"" name=""fname""><br>
+            <input type=""text"" id=""name"" name=""name""><br>
             <input type=""submit"" value=""Submit"">
         </form>
     </body>
@@ -72,10 +79,10 @@ namespace NFChatApp
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Chat</title>
+        <title>BOMBSHELTER Chat</title>
     </head>
     <body>
-        <h1>WebSocket Chat</h1>
+        <h1>WebSocket BOMBSHELTER Chat - {name}</h1>
         <form action="""" onsubmit=""sendMessage(event)"">
             <input type=""text"" id=""messageText"" autocomplete=""off""/>
             <button>Send</button>
@@ -83,7 +90,7 @@ namespace NFChatApp
         <ul id='messages'>
         </ul>
         <script>
-            var ws = new WebSocket(""ws://"" + location.hostname + ""/chat"", ""{name}"");
+            var ws = new WebSocket(""ws://"" + location.hostname + "":8080/chat"", ""{name}"");
         ws.onmessage = function(event) {{
             var messages = document.getElementById('messages')
                 var message = document.createElement('li')
@@ -106,6 +113,13 @@ namespace NFChatApp
             context.Response.ContentType = "text/html";
             context.Response.ContentLength64 = html.Length;
             WebServer.OutPutStream(context.Response, html);
+        }
+
+        private static string GetRequestContent(HttpListenerContext context)
+        {
+            byte[] buff = new byte[context.Request.ContentLength64];
+            context.Request.InputStream.Read(buff, 0, buff.Length);
+            return Encoding.UTF8.GetString(buff, 0, buff.Length);
         }
     }
 }
