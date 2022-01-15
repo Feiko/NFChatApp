@@ -5,11 +5,9 @@ VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "NFChatApp", "NFChatApp\NFChatApp.nfproj", "{B31794EB-52DF-4B7D-8F96-2F6D6FC2A4FD}"
 EndProject
-Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "System.Net.WebSockets", "..\System.Net.WebSockets\WebSockets\System.Net.WebSockets.nfproj", "{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}"
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.WebServer", "..\nanoFramework.WebServer\nanoFramework.WebServer\nanoFramework.WebServer.nfproj", "{87AAA5FE-CBB6-497F-97B7-7AF21B9A0C4E}"
 EndProject
 Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "System.Net.WebSockets.Server", "..\System.Net.WebSockets\WebSockets.Server\System.Net.WebSockets.Server.nfproj", "{08847152-FAEB-41A8-BF85-BD8FC1C39C93}"
-EndProject
-Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.WebServer", "..\nanoFramework.WebServer\nanoFramework.WebServer\nanoFramework.WebServer.nfproj", "{87AAA5FE-CBB6-497F-97B7-7AF21B9A0C4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,24 +21,18 @@ Global
 		{B31794EB-52DF-4B7D-8F96-2F6D6FC2A4FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B31794EB-52DF-4B7D-8F96-2F6D6FC2A4FD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B31794EB-52DF-4B7D-8F96-2F6D6FC2A4FD}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71C3E5DB-C987-4C95-B6E0-9EE588241A6B}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{08847152-FAEB-41A8-BF85-BD8FC1C39C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08847152-FAEB-41A8-BF85-BD8FC1C39C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08847152-FAEB-41A8-BF85-BD8FC1C39C93}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{08847152-FAEB-41A8-BF85-BD8FC1C39C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08847152-FAEB-41A8-BF85-BD8FC1C39C93}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08847152-FAEB-41A8-BF85-BD8FC1C39C93}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{87AAA5FE-CBB6-497F-97B7-7AF21B9A0C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{87AAA5FE-CBB6-497F-97B7-7AF21B9A0C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87AAA5FE-CBB6-497F-97B7-7AF21B9A0C4E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{87AAA5FE-CBB6-497F-97B7-7AF21B9A0C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87AAA5FE-CBB6-497F-97B7-7AF21B9A0C4E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{87AAA5FE-CBB6-497F-97B7-7AF21B9A0C4E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{08847152-FAEB-41A8-BF85-BD8FC1C39C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08847152-FAEB-41A8-BF85-BD8FC1C39C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08847152-FAEB-41A8-BF85-BD8FC1C39C93}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{08847152-FAEB-41A8-BF85-BD8FC1C39C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08847152-FAEB-41A8-BF85-BD8FC1C39C93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08847152-FAEB-41A8-BF85-BD8FC1C39C93}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

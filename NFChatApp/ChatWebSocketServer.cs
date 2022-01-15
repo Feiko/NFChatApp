@@ -33,13 +33,14 @@ namespace NFChatApp
         internal static bool AddClient(HttpListenerContext context)
         {
             string name = context.Request.Headers["Sec-WebSocket-Protocol"];
-            
+
+
             if (string.IsNullOrEmpty(name)) return false;
 
             if (WebsocketServer.AddWebSocket(context)) //todo add client  
             {
                 WebSocketUsers[context.Request.RemoteEndPoint.ToString()] = name;
-                WebsocketServer.BroadCast("name is joining the chat!");
+                WebsocketServer.BroadCast($"{name} is joining the chat!");
                 return true;
             }
 
